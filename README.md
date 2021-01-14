@@ -22,7 +22,7 @@
   * Ensure you `push` the newly created file: `requirements.txt`
 * Create a `Dockerfile` which runs the application upon running the container.
   * Ensure you `push` the newly created file: `Dockerfile`
-* Configure a Kubernetes cluster to build and run two instance of the container aforementioned container.
+* Configure a Kubernetes cluster to build and run one pod which contain aforementioned application.
   * Ensure each application is accessible on a different port.
   * Ensure you `push` the newly created file: `kubeconfig`
 
