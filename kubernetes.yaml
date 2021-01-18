@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sba-kubernetes-cluster
+  labels:
+    app: sba-kubernetes-cluster
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sba-kubernetes-cluster
+  template:
+    metadata:         
+      labels:
+        app: sba-kubernetes-cluster
+    spec:
+      containers:     
+        - name: sba-kubernetes-cluster
+          image: willstopher/sba.kubernetes-cluster:latest
+          ports:
+            - containerPort: 8080   
