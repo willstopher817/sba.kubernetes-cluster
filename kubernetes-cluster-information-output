@@ -1,7 +1,7 @@
 NAME                                      READY   STATUS    RESTARTS   AGE
-sba-kubernetes-cluster-5756947dfc-4dkgt   1/1     Running   0          4h56m
-sba-kubernetes-cluster-5756947dfc-5gvx6   1/1     Running   0          4h57m
-sba-kubernetes-cluster-5756947dfc-bmb6h   1/1     Running   0          4h56m
+sba-kubernetes-cluster-5756947dfc-4dkgt   1/1     Running   1          17h
+sba-kubernetes-cluster-5756947dfc-5gvx6   1/1     Running   1          17h
+sba-kubernetes-cluster-5756947dfc-bmb6h   1/1     Running   1          17h
 Name:              kubernetes
 Namespace:         default
 Labels:            component=apiserver
@@ -17,6 +17,24 @@ TargetPort:        8443/TCP
 Endpoints:         192.168.49.2:8443
 Session Affinity:  None
 Events:            <none>
+
+
+Name:                     sba-kubernetes-cluster-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=sba-kubernetes-cluster
+Type:                     NodePort
+IP Families:              <none>
+IP:                       10.106.92.218
+IPs:                      <none>
+Port:                     <unset>  8010/TCP
+TargetPort:               8010/TCP
+NodePort:                 <unset>  32000/TCP
+Endpoints:                172.17.0.4:8010,172.17.0.6:8010,172.17.0.7:8010
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
 Name:         sba-kubernetes-cluster-5756947dfc-4dkgt
 Namespace:    default
 Priority:     0
@@ -26,21 +44,26 @@ Labels:       app=sba-kubernetes-cluster
               pod-template-hash=5756947dfc
 Annotations:  <none>
 Status:       Running
-IP:           172.17.0.9
+IP:           172.17.0.6
 IPs:
-  IP:           172.17.0.9
+  IP:           172.17.0.6
 Controlled By:  ReplicaSet/sba-kubernetes-cluster-5756947dfc
 Containers:
   sba-kubernetes-cluster:
-    Container ID:   docker://f6f8f84313a4554ae94305e1b8068af3da2b67186c7c56eaed89aff50eb8f0a4
+    Container ID:   docker://7af7ca0495059ff267843f4bf4e70604ea7092e4d40441adb421796a77b93abb
     Image:          willstopher/sba.kubernetes-cluster:latest
     Image ID:       docker-pullable://willstopher/sba.kubernetes-cluster@sha256:b025d31a7d62039fb02170f9164c338d734045749b3bc70e1fa90cd42e5aa4d0
     Port:           8080/TCP
     Host Port:      0/TCP
     State:          Running
+      Started:      Tue, 19 Jan 2021 11:29:04 -0500
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    255
       Started:      Mon, 18 Jan 2021 17:32:33 -0500
+      Finished:     Tue, 19 Jan 2021 11:28:26 -0500
     Ready:          True
-    Restart Count:  0
+    Restart Count:  1
     Environment:    <none>
     Mounts:
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-tpbtj (ro)
@@ -59,7 +82,13 @@ QoS Class:       BestEffort
 Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
                  node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-Events:          <none>
+Events:
+  Type    Reason          Age    From     Message
+  ----    ------          ----   ----     -------
+  Normal  SandboxChanged  2m36s  kubelet  Pod sandbox changed, it will be killed and re-created.
+  Normal  Pulled          2m29s  kubelet  Container image "willstopher/sba.kubernetes-cluster:latest" already present on machine
+  Normal  Created         2m28s  kubelet  Created container sba-kubernetes-cluster
+  Normal  Started         2m26s  kubelet  Started container sba-kubernetes-cluster
 
 
 Name:         sba-kubernetes-cluster-5756947dfc-5gvx6
@@ -71,21 +100,26 @@ Labels:       app=sba-kubernetes-cluster
               pod-template-hash=5756947dfc
 Annotations:  <none>
 Status:       Running
-IP:           172.17.0.8
+IP:           172.17.0.4
 IPs:
-  IP:           172.17.0.8
+  IP:           172.17.0.4
 Controlled By:  ReplicaSet/sba-kubernetes-cluster-5756947dfc
 Containers:
   sba-kubernetes-cluster:
-    Container ID:   docker://2f170a57fa081830019e89eb2d34f3d6d12b412aa67b84826413edf07c9604ce
+    Container ID:   docker://576a0758d7f369d873b0086aee20f46f43082187a2734c2ea585a3817c78063a
     Image:          willstopher/sba.kubernetes-cluster:latest
     Image ID:       docker-pullable://willstopher/sba.kubernetes-cluster@sha256:b025d31a7d62039fb02170f9164c338d734045749b3bc70e1fa90cd42e5aa4d0
     Port:           8080/TCP
     Host Port:      0/TCP
     State:          Running
+      Started:      Tue, 19 Jan 2021 11:29:03 -0500
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    255
       Started:      Mon, 18 Jan 2021 17:32:32 -0500
+      Finished:     Tue, 19 Jan 2021 11:28:26 -0500
     Ready:          True
-    Restart Count:  0
+    Restart Count:  1
     Environment:    <none>
     Mounts:
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-tpbtj (ro)
@@ -104,7 +138,13 @@ QoS Class:       BestEffort
 Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
                  node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-Events:          <none>
+Events:
+  Type    Reason          Age    From     Message
+  ----    ------          ----   ----     -------
+  Normal  SandboxChanged  2m37s  kubelet  Pod sandbox changed, it will be killed and re-created.
+  Normal  Pulled          2m29s  kubelet  Container image "willstopher/sba.kubernetes-cluster:latest" already present on machine
+  Normal  Created         2m29s  kubelet  Created container sba-kubernetes-cluster
+  Normal  Started         2m27s  kubelet  Started container sba-kubernetes-cluster
 
 
 Name:         sba-kubernetes-cluster-5756947dfc-bmb6h
@@ -116,21 +156,26 @@ Labels:       app=sba-kubernetes-cluster
               pod-template-hash=5756947dfc
 Annotations:  <none>
 Status:       Running
-IP:           172.17.0.6
+IP:           172.17.0.7
 IPs:
-  IP:           172.17.0.6
+  IP:           172.17.0.7
 Controlled By:  ReplicaSet/sba-kubernetes-cluster-5756947dfc
 Containers:
   sba-kubernetes-cluster:
-    Container ID:   docker://62b9146b5cc9dc8abb98785d51fa48ebb598c804225158833d5bda2861f0b5f6
+    Container ID:   docker://9b1ae1cc15304f285ee341cdd930937567c9ffb43ab9ac41d6d960b404599355
     Image:          willstopher/sba.kubernetes-cluster:latest
     Image ID:       docker-pullable://willstopher/sba.kubernetes-cluster@sha256:b025d31a7d62039fb02170f9164c338d734045749b3bc70e1fa90cd42e5aa4d0
     Port:           8080/TCP
     Host Port:      0/TCP
     State:          Running
+      Started:      Tue, 19 Jan 2021 11:29:04 -0500
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    255
       Started:      Mon, 18 Jan 2021 17:32:34 -0500
+      Finished:     Tue, 19 Jan 2021 11:28:26 -0500
     Ready:          True
-    Restart Count:  0
+    Restart Count:  1
     Environment:    <none>
     Mounts:
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-tpbtj (ro)
@@ -149,7 +194,13 @@ QoS Class:       BestEffort
 Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
                  node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-Events:          <none>
+Events:
+  Type    Reason          Age    From     Message
+  ----    ------          ----   ----     -------
+  Normal  SandboxChanged  2m36s  kubelet  Pod sandbox changed, it will be killed and re-created.
+  Normal  Pulled          2m29s  kubelet  Container image "willstopher/sba.kubernetes-cluster:latest" already present on machine
+  Normal  Created         2m28s  kubelet  Created container sba-kubernetes-cluster
+  Normal  Started         2m26s  kubelet  Started container sba-kubernetes-cluster
 Name:               minikube
 Roles:              master
 Labels:             beta.kubernetes.io/arch=amd64
@@ -171,14 +222,14 @@ Unschedulable:      false
 Lease:
   HolderIdentity:  minikube
   AcquireTime:     <unset>
-  RenewTime:       Mon, 18 Jan 2021 22:29:14 -0500
+  RenewTime:       Tue, 19 Jan 2021 11:31:23 -0500
 Conditions:
   Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
   ----             ------  -----------------                 ------------------                ------                       -------
-  MemoryPressure   False   Mon, 18 Jan 2021 22:29:05 -0500   Mon, 11 Jan 2021 11:13:33 -0500   KubeletHasSufficientMemory   kubelet has sufficient memory available
-  DiskPressure     False   Mon, 18 Jan 2021 22:29:05 -0500   Mon, 11 Jan 2021 11:13:33 -0500   KubeletHasNoDiskPressure     kubelet has no disk pressure
-  PIDPressure      False   Mon, 18 Jan 2021 22:29:05 -0500   Mon, 11 Jan 2021 11:13:33 -0500   KubeletHasSufficientPID      kubelet has sufficient PID available
-  Ready            True    Mon, 18 Jan 2021 22:29:05 -0500   Mon, 11 Jan 2021 11:13:50 -0500   KubeletReady                 kubelet is posting ready status
+  MemoryPressure   False   Tue, 19 Jan 2021 11:28:53 -0500   Mon, 11 Jan 2021 11:13:33 -0500   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Tue, 19 Jan 2021 11:28:53 -0500   Mon, 11 Jan 2021 11:13:33 -0500   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Tue, 19 Jan 2021 11:28:53 -0500   Mon, 11 Jan 2021 11:13:33 -0500   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Tue, 19 Jan 2021 11:28:53 -0500   Mon, 11 Jan 2021 11:13:50 -0500   KubeletReady                 kubelet is posting ready status
 Addresses:
   InternalIP:  192.168.49.2
   Hostname:    minikube
@@ -195,8 +246,8 @@ Allocatable:
   memory:             9751920Ki
   pods:               110
 System Info:
-  Machine ID:                 abcc87c2023149c88896c2cb22437d4b
-  System UUID:                abcc87c2023149c88896c2cb22437d4b
+  Machine ID:                 337f43425b52451eb6b30de73c000b5d
+  System UUID:                337f43425b52451eb6b30de73c000b5d
   Boot ID:                    5d8de61f-9b91-4aeb-adb3-9eedc916d52e
   Kernel Version:             4.19.128-microsoft-standard
   OS Image:                   Ubuntu 20.04.1 LTS
@@ -208,18 +259,18 @@ System Info:
 Non-terminated Pods:          (12 in total)
   Namespace                   Name                                         CPU Requests  CPU Limits  Memory Requests  Memory Limits  AGE
   ---------                   ----                                         ------------  ----------  ---------------  -------------  ---
-  default                     sba-kubernetes-cluster-5756947dfc-4dkgt      0 (0%)        0 (0%)      0 (0%)           0 (0%)         4h56m
-  default                     sba-kubernetes-cluster-5756947dfc-5gvx6      0 (0%)        0 (0%)      0 (0%)           0 (0%)         4h57m
-  default                     sba-kubernetes-cluster-5756947dfc-bmb6h      0 (0%)        0 (0%)      0 (0%)           0 (0%)         4h56m
-  kube-system                 coredns-f9fd979d6-js6ln                      100m (1%)     0 (0%)      70Mi (0%)        170Mi (1%)     7d11h
-  kube-system                 etcd-minikube                                0 (0%)        0 (0%)      0 (0%)           0 (0%)         7d11h
-  kube-system                 kube-apiserver-minikube                      250m (3%)     0 (0%)      0 (0%)           0 (0%)         7d11h
-  kube-system                 kube-controller-manager-minikube             200m (2%)     0 (0%)      0 (0%)           0 (0%)         7d11h
-  kube-system                 kube-proxy-bzj7k                             0 (0%)        0 (0%)      0 (0%)           0 (0%)         7d11h
-  kube-system                 kube-scheduler-minikube                      100m (1%)     0 (0%)      0 (0%)           0 (0%)         7d11h
-  kube-system                 storage-provisioner                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         7d11h
-  kubernetes-dashboard        dashboard-metrics-scraper-c95fcf479-mv58r    0 (0%)        0 (0%)      0 (0%)           0 (0%)         26h
-  kubernetes-dashboard        kubernetes-dashboard-584f46694c-bqnrh        0 (0%)        0 (0%)      0 (0%)           0 (0%)         26h
+  default                     sba-kubernetes-cluster-5756947dfc-4dkgt      0 (0%)        0 (0%)      0 (0%)           0 (0%)         17h
+  default                     sba-kubernetes-cluster-5756947dfc-5gvx6      0 (0%)        0 (0%)      0 (0%)           0 (0%)         17h
+  default                     sba-kubernetes-cluster-5756947dfc-bmb6h      0 (0%)        0 (0%)      0 (0%)           0 (0%)         17h
+  kube-system                 coredns-f9fd979d6-js6ln                      100m (1%)     0 (0%)      70Mi (0%)        170Mi (1%)     8d
+  kube-system                 etcd-minikube                                0 (0%)        0 (0%)      0 (0%)           0 (0%)         8d
+  kube-system                 kube-apiserver-minikube                      250m (3%)     0 (0%)      0 (0%)           0 (0%)         8d
+  kube-system                 kube-controller-manager-minikube             200m (2%)     0 (0%)      0 (0%)           0 (0%)         8d
+  kube-system                 kube-proxy-bzj7k                             0 (0%)        0 (0%)      0 (0%)           0 (0%)         8d
+  kube-system                 kube-scheduler-minikube                      100m (1%)     0 (0%)      0 (0%)           0 (0%)         8d
+  kube-system                 storage-provisioner                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         8d
+  kubernetes-dashboard        dashboard-metrics-scraper-c95fcf479-mv58r    0 (0%)        0 (0%)      0 (0%)           0 (0%)         39h
+  kubernetes-dashboard        kubernetes-dashboard-584f46694c-bqnrh        0 (0%)        0 (0%)      0 (0%)           0 (0%)         39h
 Allocated resources:
   (Total limits may be over 100 percent, i.e., overcommitted.)
   Resource           Requests   Limits
@@ -228,4 +279,12 @@ Allocated resources:
   memory             70Mi (0%)  170Mi (1%)
   ephemeral-storage  0 (0%)     0 (0%)
   hugepages-2Mi      0 (0%)     0 (0%)
-Events:              <none>
+Events:
+  Type    Reason                   Age                    From        Message
+  ----    ------                   ----                   ----        -------
+  Normal  Starting                 2m53s                  kubelet     Starting kubelet.
+  Normal  NodeAllocatableEnforced  2m52s                  kubelet     Updated Node Allocatable limit across pods
+  Normal  NodeHasSufficientMemory  2m51s (x8 over 2m53s)  kubelet     Node minikube status is now: NodeHasSufficientMemory
+  Normal  NodeHasNoDiskPressure    2m51s (x8 over 2m53s)  kubelet     Node minikube status is now: NodeHasNoDiskPressure
+  Normal  NodeHasSufficientPID     2m51s (x7 over 2m53s)  kubelet     Node minikube status is now: NodeHasSufficientPID
+  Normal  Starting                 2m29s                  kube-proxy  Starting kube-proxy.
